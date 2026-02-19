@@ -1,0 +1,788 @@
+/* ===== ФИРМЕННЫЙ СТИЛЬ ФОТОДЗЕН ===== */
+:root {
+    --color-primary: #07b9ff;      /* Голубой основной */
+    --color-secondary: #07ffc9;    /* Бирюзовый акцентный */
+    --color-primary-dark: #077bff; /* Тёмно-голубой */
+    --color-dark: #1a1a1a;         /* Тёмный текст */
+    --color-light: #f8f9fa;        /* Светлый фон */
+    --shadow: 0 4px 12px rgba(7, 185, 255, 0.2);
+    --border-radius: 12px;
+}
+
+/* ===== ШАПКА КАЛЬКУЛЯТОРА ===== */
+.header-container {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+.header-sidebar {
+    flex: 0 0 25%;
+}
+
+.header-frame {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+}
+
+.logo-container {
+    margin-bottom: 15px;
+}
+
+.logo-text {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #07b9ff;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.logo-image {
+    max-width: 100%;
+    max-height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+.header-cta {
+    margin-top: 10px;
+}
+
+.header-cta p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #0088cc;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 136, 204, 0.3);
+}
+
+.telegram-btn:hover {
+    background: #0077b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.4);
+}
+
+.telegram-logo {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.header-title {
+    flex: 0 0 75%;
+    text-align: left;
+}
+
+.header-title h1 {
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+}
+
+.header-title p {
+    color: #555;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Адаптивность шапки */
+@media (max-width: 900px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-sidebar,
+    .header-title {
+        flex: 1 0 100%;
+    }
+    
+    .header-title h1,
+    .header-title p {
+        text-align: center;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--color-dark);
+    background: linear-gradient(135deg, #07b9ff 0%, #07ffc9 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Подключение шрифта Rubik */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    padding: 30px;
+    position: relative;
+}
+
+/* Логотип и заголовок */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--color-primary);
+    position: relative;
+}
+
+header h1 {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+
+header p {
+    color: #555;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+/* Навигация */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    background: #f0f0f0;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+    z-index: -1;
+}
+
+.tab-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.tab-btn:hover {
+    color: white;
+}
+
+.tab-btn.active {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Формы */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Rubik', sans-serif;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    transition: all 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(7, 185, 255, 0.1);
+}
+
+/* Кнопки */
+.btn {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    color: white !important;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(7, 185, 255, 0.3);
+}
+
+.btn-secondary {
+    background: var(--color-secondary);
+    color: var(--color-dark);
+    box-shadow: 0 4px 12px rgba(7, 255, 201, 0.2);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(7, 255, 201, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+/* Таблицы тарифов */
+.tariff-table {
+    overflow-x: auto;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.tariff-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.tariff-table th,
+.tariff-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+/* ЗАГОЛОВКИ ТАБЛИЦ - просто голубой без градиента */
+.tariff-table th {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+}
+
+.tariff-table td {
+    background: #f9f9f9;
+}
+
+.tariff-table input {
+    width: 80px;
+    padding: 8px;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.tariff-table input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/* Результаты */
+.result-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.result-section h3 {
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 22px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-table th,
+.result-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* ЗАГОЛОВКИ ТАБЛИЦ РЕЗУЛЬТАТОВ - просто голубой без градиента */
+.result-table th {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+}
+
+.result-table tfoot td {
+    font-weight: 700;
+    font-size: 18px;
+    background: #e0e0e0;
+}
+
+/* Столбец себестоимости */
+.result-table th:nth-child(3),
+.result-table td:nth-child(3) {
+    background-color: #e3f2fd !important;
+    font-weight: 600;
+}
+
+.result-table th:nth-child(3) {
+    background-color: #2196f3 !important;
+    color: white;
+}
+
+/* СКРЫТЬ СТРОКИ С МАРЖОЙ В ПЛАНИРУЕМОЙ ВЫРУЧКЕ */
+#plannedRevenueTable .margin-row {
+    display: none;
+}
+
+/* Строка маржи - гармоничный цвет с фирменной палитрой */
+.margin-row {
+    background-color: #e3f2fd !important;
+}
+
+.margin-row td:first-child {
+    font-weight: 600;
+    color: #1565c0;
+}
+
+/* Финансовые результаты - ПОЛНОСТЬЮ ПЕРЕПИСАНО */
+.financial-result {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+/* Все строки по умолчанию - жирные и голубые */
+.financial-result .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* Последняя строка без нижней границы */
+.financial-result .row:last-child {
+    border-bottom: none;
+}
+
+/* Вложенные строки (Фотограф, Обработка, Дизайн, Типография) - обычный стиль */
+.financial-result > div > div.row {
+    font-weight: normal;
+    color: #333;
+}
+
+/* Чистая прибыль - бирюзовый цвет И ЖИРНЫЙ ШРИФТ */
+.financial-result .row.positive {
+    color: var(--color-secondary) !important;
+    font-weight: 700 !important;
+}
+
+.financial-result .row.negative {
+    color: #f44336;
+    font-weight: 700 !important;
+}
+
+/* Валидация - гармоничные цвета с фирменной палитрой */
+.validation-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+}
+
+.validation-message.error {
+    background: #ffebee;
+    border: 2px solid #ffcdd2;
+    color: #c62828;
+}
+
+.validation-message.success {
+    background: #e3f2fd;
+    border: 2px solid #90caf9;
+    color: #0d47a1;
+}
+
+.validation-message.warning {
+    background: #fff8e1;
+    border: 2px solid #ffe082;
+    color: #5d4037;
+}
+
+/* Инпуты в таблицах результатов */
+.result-table input {
+    width: 80px;
+    padding: 8px;
+    text-align: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.result-table input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.result-table input.error {
+    border-color: #f44336;
+    background: #ffebee;
+}
+
+/* Ресурсы */
+.resource-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-primary);
+}
+
+.resource-section h3 {
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Rubik', sans-serif;
+}
+
+.resource-section h4 {
+    margin: 15px 0 10px 0;
+    color: #555;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.resource-details {
+    margin-top: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+/* СМЕСТИТЬ ПЕРЕКЛЮЧАТЕЛИ ВЛЕВО - ИЗМЕНЁННАЯ СТРУКТУРА */
+.toggle-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.toggle-group label:first-child {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.toggle-group .switch {
+    margin: 0;
+}
+
+/* Переключатели */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 0;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Маленькие переключатели */
+.switch.small {
+    width: 45px;
+    height: 24px;
+}
+
+.switch.small .slider:before {
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+}
+
+.switch.small input:checked + .slider:before {
+    transform: translateX(21px);
+}
+
+/* Цены типографии */
+.print-prices-table {
+    margin-top: 15px;
+}
+
+.print-prices-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.print-prices-table th,
+.print-prices-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+/* ЗАГОЛОВКИ ТАБЛИЦЫ ТИПОГРАФИИ - просто голубой без градиента */
+.print-prices-table th {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.print-prices-table input {
+    width: 100px;
+    padding: 8px;
+    text-align: right;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.print-prices-table input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/* Подсказки */
+.form-group small {
+    display: block;
+    margin-top: 4px;
+    color: #888;
+    font-size: 12px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.section-note {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #e3f2fd;
+    border-left: 4px solid var(--color-primary);
+    border-radius: 4px;
+    font-size: 14px;
+    color: #0d47a1;
+    font-family: 'Rubik', sans-serif;
+}
+
+.hint {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+    font-weight: normal;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Разделители секций - ЧЁРНЫЙ ЦВЕТ ДЛЯ "📸 ФОТОГРАФИИ В АЛЬБОМЕ" */
+.section-divider {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 15px !important;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* ЧЁРНЫЙ ЦВЕТ ДЛЯ ЗАГОЛОВКА "📸 ФОТОГРАФИИ В АЛЬБОМЕ" */
+.section-divider.photos-section {
+    color: var(--color-dark) !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid var(--color-primary) !important;
+}
+
+.section-divider td {
+    padding: 12px 15px !important;
+    border: none !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    header h1 {
+        font-size: 24px;
+    }
+}
+/* Заголовок "📸 Фотографии в альбоме" - фирменный шрифт */
+.section-divider.photos-section {
+    font-family: 'Rubik', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+}

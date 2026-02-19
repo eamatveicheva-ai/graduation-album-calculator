@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор рентабельности проекта по созданию выпускных альбомов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+    <div class="header-container">
+        <!-- Левая часть (25%) - Рамка с логотипом и призывом -->
+        <div class="header-sidebar">
+            <div class="header-frame">
+                <div class="logo-container">
+    <img src="logo.png" alt="ФотоДзен" class="logo-image">
+</div>
+                <div class="header-cta">
+                    <p>Хочешь больше таких инструментов?<br>Подпишись на ФотоДзен!</p>
+                    <a href="https://t.me/PhotoDzen_ru" target="_blank" class="telegram-btn">
+    <img src="logo_TG.png" alt="Telegram" class="telegram-logo">
+    Подписаться
+</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правая часть (75%) - Заголовок калькулятора -->
+        <div class="header-title">
+            <h1>Калькулятор рентабельности проекта по созданию выпускных альбомов</h1>
+            <p>Рассчитай объективную цену и свою прибыль за 3 минуты</p>
+        </div>
+    </div>
+</header>
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="project">Настройка проекта</button>
+    <button class="tab-btn" data-tab="resources">Настройка ресурсов</button>
+    <button class="tab-btn" data-tab="tariffs">Конструктор тарифов</button>
+    <button class="tab-btn" data-tab="results">Финансовый результат</button>
+        </nav>
+
+        <!-- ЭКРАН 1: Настройка проекта -->
+        <div id="project" class="tab-content active">
+            <h2>Настройка проекта</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Количество детей в классе</label>
+                    <input type="number" id="classSize" value="29" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Количество педагогов</label>
+                    <input type="number" id="teachersCount" value="1" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Разворотов в альбоме учителя</label>
+                    <select id="teacherAlbumSpreads">
+                        <option value="2">2 разворота</option>
+                        <option value="3" selected>3 разворота</option>
+                        <option value="4">4 разворота</option>
+                        <option value="5">5 разворотов</option>
+                        <option value="6">6 разворотов</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Желаемая маржа (%)</label>
+                    <input type="number" id="marginPercent" value="35" min="0" max="100">
+                </div>
+                <div class="form-group">
+                    <label>Скидка для родителей (%)</label>
+                    <input type="number" id="discountPercent" value="30" min="0" max="100">
+                </div>
+            </div>
+            <button class="btn btn-primary next-btn" data-next="resources">Далее → Настройка ресурсов</button>
+        </div>
+
+<!-- ЭКРАН 2: Настройка ресурсов -->
+        <div id="resources" class="tab-content">
+            <h2>Настройка ресурсов</h2>
+            <p class="section-note">Укажите ставки специалистов и стоимость услуг типографии</p>
+
+            <!-- Фотограф -->
+            <div class="resource-section">
+                <h3>📸 Фотограф</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Ставка за час съёмки</label>
+                        <input type="number" id="shootingHourRate" value="2000" min="0">
+                        <small>₽/час</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Время на съёмку 1 фото</label>
+                        <input type="number" id="photoTimeMin" value="0.925" step="0.001" min="0.1">
+                        <small>минут</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Доставка оборудования</label>
+                        <input type="number" id="equipmentDelivery" value="1500" min="0">
+                        <small>₽ за проект</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Время согласования макетов</label>
+                        <input type="number" id="approvalHours" value="3" min="0">
+                        <small>часов</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Ставка за согласование</label>
+                        <input type="number" id="approvalRate" value="1500" min="0">
+                        <small>₽/час</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ретушёр -->
+            <div class="resource-section">
+                <h3>🎨 Ретушёр</h3>
+                <div class="toggle-group">
+                    <label class="switch">
+                        <input type="checkbox" id="hasRetoucher" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label>Есть в команде?</label>
+                </div>
+                <div id="retoucherDetails" class="resource-details">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Базовая обработка (цветокоррекция)</label>
+                            <input type="number" id="basicProcessingRate" value="1330" min="0">
+                            <small>₽/час</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Детальная ретушь</label>
+                            <input type="number" id="retouchRate" value="133" min="0">
+                            <small>₽/фото</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Дизайнер -->
+            <div class="resource-section">
+                <h3>✏️ Дизайнер</h3>
+                <div class="toggle-group">
+                    <label class="switch">
+                        <input type="checkbox" id="hasDesigner" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <label>Есть в команде?</label>
+                </div>
+                <div id="designerDetails" class="resource-details">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Разработка дизайна с нуля (тестовый макет)</label>
+                            <input type="number" id="testLayoutRate" value="630" min="0">
+                            <small>₽/разворот</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Наполнение готового макета</label>
+                            <input type="number" id="layoutFillingRate" value="350" min="0">
+                            <small>₽/разворот</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Типография -->
+            <div class="resource-section">
+                <h3>🖨️ Типография</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Доставка из типографии</label>
+                        <input type="number" id="printDelivery" value="1000" min="0">
+                        <small>₽ за проект</small>
+                    </div>
+                </div>
+                
+                <h4>Стоимость печати альбома</h4>
+                <div class="print-prices-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Разворотов</th>
+                                <th>Стоимость</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2</td>
+                                <td><input type="number" class="print-price" data-spreads="2" value="820" min="0"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><input type="number" class="print-price" data-spreads="3" value="1004" min="0"></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><input type="number" class="print-price" data-spreads="4" value="1188" min="0"></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><input type="number" class="print-price" data-spreads="5" value="1372" min="0"></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><input type="number" class="print-price" data-spreads="6" value="1556" min="0"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn btn-primary next-btn" data-next="tariffs">Далее → Конструктор тарифов</button>
+        </div>
+
+        <!-- ЭКРАН 3: Конструктор тарифов -->
+        <div id="tariffs" class="tab-content">
+            <h2>Конструктор тарифов</h2>
+            
+            <div class="tariff-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Премиум</th>
+                            <th>Комфорт+</th>
+                            <th>Комфорт</th>
+                            <th>Эконом</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Разворотов в альбоме</strong></td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="spreads" value="6" min="2" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="spreads" value="5" min="2" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="spreads" value="4" min="2" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="spreads" value="3" min="2" max="6"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Индивидуальных разворотов</strong></td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="individualSpreads" value="2" min="0" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="individualSpreads" value="2" min="0" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="individualSpreads" value="1" min="0" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="individualSpreads" value="1" min="0" max="6"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Общих разворотов</strong></td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="commonSpreads" value="4" min="0" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="commonSpreads" value="3" min="0" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="commonSpreads" value="3" min="0" max="6"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="commonSpreads" value="2" min="0" max="6"></td>
+                        </tr>
+                        <tr class="section-divider photos-section">
+    <td colspan="5"><strong>📸 Фотографии в альбоме</strong></td>
+</tr>
+                        <tr>
+                            <td>Индивидуальные портреты</td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="individualPortraits" value="7" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="individualPortraits" value="6" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="individualPortraits" value="2" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="individualPortraits" value="2" min="0" max="20"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Детальная ретушь индивидуальных портретов</span>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="premium" data-type="individualPortraits" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort_plus" data-type="individualPortraits" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort" data-type="individualPortraits" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="economy" data-type="individualPortraits" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Фото с друзьями (2 чел.)</td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="withFriends" value="3" min="0" max="10"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="withFriends" value="3" min="0" max="10"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="withFriends" value="3" min="0" max="10"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="withFriends" value="3" min="0" max="10"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Детальная ретушь фото с друзьями</span>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="premium" data-type="withFriends">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort_plus" data-type="withFriends">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort" data-type="withFriends">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="economy" data-type="withFriends">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Групповые фото ~3 чел.</td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="groups3" value="9" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="groups3" value="9" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="groups3" value="0" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="groups3" value="0" min="0" max="20"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Детальная ретушь групповых фото ~3 чел.</span>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="premium" data-type="groups3">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort_plus" data-type="groups3">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort" data-type="groups3">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="economy" data-type="groups3">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Групповые фото ~4 чел.</td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="groups4" value="8" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="groups4" value="8" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="groups4" value="8" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="groups4" value="0" min="0" max="20"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Детальная ретушь групповых фото ~4 чел.</span>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="premium" data-type="groups4">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort_plus" data-type="groups4">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort" data-type="groups4">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="economy" data-type="groups4">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Групповые фото с учителем</td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="withTeacher" value="5" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="withTeacher" value="5" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="withTeacher" value="5" min="0" max="20"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="withTeacher" value="5" min="0" max="20"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Детальная ретушь групповых фото с учителем</span>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="premium" data-type="withTeacher">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort_plus" data-type="withTeacher">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort" data-type="withTeacher">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="economy" data-type="withTeacher">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Общие фото класса</td>
+                            <td><input type="number" class="tariff-input" data-tariff="premium" data-field="classWide" value="2" min="0" max="10"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort_plus" data-field="classWide" value="2" min="0" max="10"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="comfort" data-field="classWide" value="2" min="0" max="10"></td>
+                            <td><input type="number" class="tariff-input" data-tariff="economy" data-field="classWide" value="2" min="0" max="10"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Детальная ретушь общих фото класса</span>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="premium" data-type="classWide">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort_plus" data-type="classWide">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="comfort" data-type="classWide">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="switch small">
+                                    <input type="checkbox" class="retouch-toggle" data-tariff="economy" data-type="classWide">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-primary next-btn" data-next="results">Рассчитать цены</button>
+        </div>
+
+        <!-- ЭКРАН 4: Результат -->
+        <div id="results" class="tab-content">
+            <h2>Финансовый результат</h2>
+
+            <!-- Планируемая выручка -->
+            <div class="result-section">
+                <h3>🔮 Планируемая выручка</h3>
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Тариф</th>
+                            <th>Детей</th>
+                            <th>Себестоимость</th>
+                            <th>Цена продажи</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody id="plannedRevenueTable">
+                        <!-- Заполняется JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><strong>Итого:</strong></td>
+                            <td id="plannedTotal"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div id="plannedValidation" class="validation-message"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Фактическая выручка -->
+            <div class="result-section">
+                <h3>💰 Фактическая выручка</h3>
+                <p class="section-note">Внесите фактические данные о количестве проданных альбомов и цене продажи</p>
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Тариф</th>
+                            <th>Продано</th>
+                            <th>Цена продажи<br><small>(фактическая)</small></th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody id="actualRevenueTable">
+                        <!-- Заполняется JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Итого:</strong></td>
+                            <td id="actualTotal"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div id="actualValidation" class="validation-message"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Планируемый результат -->
+            <div class="result-section">
+                <h3>📈 Планируемый финансовый результат</h3>
+                <div class="financial-result" id="plannedResult">
+                    <!-- Заполняется JavaScript -->
+                </div>
+            </div>
+
+            <!-- Фактический результат -->
+            <div class="result-section">
+                <h3>📊 Фактический финансовый результат</h3>
+                <div class="financial-result" id="actualResult">
+                    <!-- Заполняется JavaScript -->
+                </div>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
